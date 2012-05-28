@@ -1,0 +1,106 @@
+= SendGrid SMTP API gem for Rails
+
+SendGridSmtpApi SMTP API gem provides ActionMailer::Base extensions to use SendGridSmtpApi API features in you emails.
+It extends ActionMailer with next methods:
+
+    substitute(patters_string, array_of_substitunion_strings)
+    uniq_args(hash_of_unique_args)
+    category(category_string)
+    open_tracking(enabled = true)
+    add_filter_setting(filter_name, setting_name, value)
+		standard_smtp(enabled = true)
+
+== Rails 3 configuration
+
+In your Gemfile:
+
+    gem 'sendgrid_smtpapi'
+
+In your config/environment.rb:
+
+    ActionMailer::Base.register_interceptor(SendGridSmtpApi::MailInterceptor)
+
+    ActionMailer::Base.smtp_settings = {
+      :address => 'smtp.sendgrid.net',
+      :port => '25',
+      :domain => 'example.com',
+      :authentication => :plain,
+      :user_name => 'login@example.com',
+      :password => 'your password'
+    }
+
+== Usage examples
+
+=== Adding multiple recipients:
+
+    class Mailer < ActionMailer::Base
+      default :from => 'no-reply@example.com',
+              :subject => 'An email sent via SendGridSmtpApi'
+
+      def email_with_multiple_recipients
+        mail :to => %w(email1@email.com email2@email.com)
+      end
+    end
+
+=== Adding substitution vars
+
+Mailer class definition:
+
+    class Mailer < ActionMailer::Base
+      default :from => 'no-reply@example.com',
+              :subject => 'An email sent via SendGridSmtpApi with substitutions'
+
+      def email_with_substitutions
+        substitute '-user_name-', %w(User1 User2)
+
+        mail :to => %w(email1@email.com email2@email.com), :body => "Hello, -user_name-!"
+      end
+    end
+
+=== Adding category
+
+    Mailer class definition:
+
+        class Mailer < ActionMailer::Base
+          default :from => 'no-reply@example.com',
+                  :subject => 'An email sent via SendGridSmtpApi with substitutions'
+
+          def email_with_category
+            category 'SendGridSmtpApiRocks'
+            mail :to => 'email1@email.com'
+          end
+        end
+
+== Apps (formerly called Filters)
+
+Apps can be applied to any of your email messages and can be configured through SendGridSmtpApi gem.
+
+=== Open Tracking
+
+Add an invisible image at the end of the email to track e-mail opens. If the email recipient has images enabled on the email client, a request to server for the invisible image is executed and an open is logged.
+
+    class Mailer < ActionMailer::Base
+      default :from => 'no-reply@example.com',
+              :subject => 'An email sent via SendGridSmtpApi'
+
+      def email_with_open_tracking_enabled
+        open_tracking true
+        mail :to => 'email@email.com'
+      end
+    end
+
+
+=== Use Standard SMTP
+
+if you want to customize the header for sendgrids api but you need keep standard SMTP see below:
+
+    class Mailer < ActionMailer::Base
+      default :from => 'no-reply@example.com',
+              :subject => 'An email sent via SendGridSmtpApi'
+
+      def email_standard_smtp
+        standard_smtp true
+				open_tracking true
+        mail :to => 'email@email.com'
+      end
+    end
