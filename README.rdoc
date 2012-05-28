@@ -1,6 +1,6 @@
-= SendGrid SMTP API gem for Rails
+= SendGrid SMTP API gem for Rails {<img src="https://secure.travis-ci.org/kylejginavan/sendgrid_smtpapi.png"/>}[http://travis-ci.org/kylejginavan/sendgrid_smtpapi]
 
-SendGridSmtpApi SMTP API gem provides ActionMailer::Base extensions to use SendGridSmtpApi API features in you emails.
+SendGrid SMTP API gem provides ActionMailer::Base extensions to use SendGrid API features in you emails.
 It extends ActionMailer with next methods:
 
     substitute(patters_string, array_of_substitunion_strings)
