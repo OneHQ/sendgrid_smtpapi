@@ -1,4 +1,4 @@
-require 'sendgrid-rails'
+require 'sendgrid_smptapi'
 
 ActionMailer::Base.register_interceptor(SendGridSmtpApi::MailInterceptor)
 ActionMailer::Base.delivery_method = :test

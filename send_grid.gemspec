@@ -9,8 +9,8 @@ Gem::Specification.new do |s|
   s.authors     = ["kylejginavan", "chebyte"]
   s.email       = ["kylejginavan@gmail.com", "maurotorres@gmail.com"]
   s.homepage    = "https://github.com/kylejginavan/sendgrid_smtpapi"
-  s.summary     = %q{SendGridSmtpApi SMTP API gem fo Rails 3}
-  s.description = %q{Gem to extend ActionMailer with SendGridSmtpApi API support}
+  s.summary     = %q{SendGrid SMTP API gem fo Rails 3}
+  s.description = %q{Gem to extend ActionMailer with SendGrid SMTP API support}
 
   s.rubyforge_project = "sendgrid_smtpapi"
 
