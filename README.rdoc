@@ -104,3 +104,8 @@ if you want to customize the header for sendgrids api but you need keep standard
         mail :to => 'email@email.com'
       end
     end
+
+== CONTRIBUTORS:
+
+* Kyle J. Ginavan.
+* Mauro Torres - http://github.com/chebyte
