@@ -27,7 +27,7 @@ class SendGridSmtpApi::ApiHeader
   end
 
   def to_json
-    JSON.generate(@data, {:indent => "", :space => "\n", :space_before => "\n", :object_nl => "\n", :array_nl => "\n"})
+    JSON.generate(@data, {:indent => " ", :space => "", :space_before => "", :object_nl => "", :array_nl => ""})
   end
 
   def standard_smtp(enabled = false)
