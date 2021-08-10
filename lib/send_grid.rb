@@ -23,7 +23,7 @@ module SendGridSmtpApi
     end
 
     def open_tracking(enabled = true)
-      add_filter_setting(:opentrack, :enabled, enabled ? 1 : 0) unless enabled.nil?
+      add_filter_setting(:opentrack, :enable, enabled ? 1 : 0) unless enabled.nil?
     end
   end
 end

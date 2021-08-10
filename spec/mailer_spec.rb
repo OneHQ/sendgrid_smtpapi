@@ -16,12 +16,12 @@ describe Mailer do
   describe '#open_tracking' do
     it 'set correct open tracking enabled X-SMTAPI header' do
       Mailer.email_open_tracking.deliver.header.to_s.gsub(" ", "").
-        should include('{"filters":{"opentrack":{"settings":{"enabled":1}}')
+        should include('{"filters":{"opentrack":{"settings":{"enable":1}}')
     end
 
     it 'set correct open tracking disabled X-SMTAPI header' do
       Mailer.email_open_tracking(false).deliver.header.to_s.gsub(" ", "").
-        should include('"filters":{"opentrack":{"settings":{"enabled":0}}')
+        should include('"filters":{"opentrack":{"settings":{"enable":0}}')
     end
 
     it 'set correct open tracking nil X-SMTAPI header' do
