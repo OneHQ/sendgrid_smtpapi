@@ -6,7 +6,7 @@ module SendGridSmtpApi
   def self.included(base)
     base.class_eval do
       prepend InstanceMethods
-      delegate :substitute, :uniq_args, :category, :add_filter_setting, :standard_smtp, :to => :sendgrid_header
+      delegate :substitute, :uniq_args, :category, :add_filter_setting, :ip_pool, :standard_smtp, :to => :sendgrid_header
       alias_method :sendgrid_header, :send_grid_header
     end
   end

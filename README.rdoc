@@ -71,6 +71,20 @@ Mailer class definition:
           end
         end
 
+=== Setting ip pool
+
+    Mailer class definition:
+
+        class Mailer < ActionMailer::Base
+          default :from => 'no-reply@example.com',
+                  :subject => 'An email sent via SendGridSmtpApi with substitutions'
+
+          def email_with_ip_pool
+            ip_pool 'IPPoolName'
+            mail :to => 'email1@email.com'
+          end
+        end
+
 == Apps (formerly called Filters)
 
 Apps can be applied to any of your email messages and can be configured through SendGridSmtpApi gem.

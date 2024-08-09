@@ -26,6 +26,10 @@ class SendGridSmtpApi::ApiHeader
     @data[:filters][fltr][:settings][setting] = val
   end
 
+  def ip_pool(pool_name)
+    @data[:ip_pool] = pool_name
+  end
+
   def to_json
     JSON.generate(@data, {:indent => " ", :space => "", :space_before => "", :object_nl => "", :array_nl => ""})
   end
@@ -33,5 +37,4 @@ class SendGridSmtpApi::ApiHeader
   def standard_smtp(enabled = false)
     @standard_smtp = enabled
   end
-
 end

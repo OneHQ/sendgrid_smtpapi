@@ -36,5 +36,10 @@ describe SendGridSmtpApi::ApiHeader do
       header.add_filter_setting :filter1, :setting1, 'val1'
       header.to_json.should eql '{ "filters":{  "filter1":{   "settings":{    "setting1":"val1"   }  } }}'
     end
+
+    it "contains ip_pool" do
+      header.ip_pool 'pool_name'
+      header.to_json.should eql '{ "ip_pool":"pool_name"}'
+    end
   end
 end
